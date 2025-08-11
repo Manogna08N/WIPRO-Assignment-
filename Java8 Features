@@ -1,0 +1,38 @@
+package com.km;
+
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.Period;
+
+
+public class Time_Api {
+
+	public static void main(String[] args) {
+		
+		LocalTime today=LocalTime.now();
+		System.out.println(today);
+		
+		LocalDate localDate=LocalDate.now();
+		System.out.println(localDate);
+		
+		LocalDateTime localDateTime=LocalDateTime.now();
+		System.out.println(localDateTime);
+
+		
+		LocalDate birthday=LocalDate.of(2003, 6, 8);
+		 
+		Period ageDiff=Period.between(localDate, birthday);
+
+		System.out.println(ageDiff.getYears());
+		
+		LocalTime start = LocalTime.now();
+		LocalTime end = LocalTime.of(8,45);
+		Duration d1 = Duration.between(start, end);
+		System.out.println(d1);
+		
+
+	}
+
+}
