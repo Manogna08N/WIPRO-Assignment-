@@ -1,0 +1,29 @@
+abstract class NotificationService {
+    public abstract void sendNotification(String message);
+}
+
+
+class EmailNotification extends NotificationService {
+    @Override
+    public void sendNotification(String message) {
+        System.out.println("Sending email: " + message);
+    }
+}
+
+
+class SMSNotification extends NotificationService {
+    @Override
+    public void sendNotification(String message) {
+        System.out.println("Sending SMS: " + message);
+    }
+}
+
+public class OpenClosedPrinciple {
+    public static void main(String[] args) {
+        NotificationService emailService = new EmailNotification();
+        NotificationService smsService = new SMSNotification();
+
+        emailService.sendNotification("Your order has been shipped.");
+        smsService.sendNotification("Your account has been updated.");
+    }
+}
