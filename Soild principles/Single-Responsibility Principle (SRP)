@@ -1,0 +1,36 @@
+class Student {
+    private String name;
+
+    public Student(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+}
+
+
+class StudentView {
+    public void displayStudentInfo(Student student) {
+        System.out.println("Student Name: " + student.getName());
+    }
+}
+
+
+class StudentRepository {
+    public void save(Student student) {
+        System.out.println("Saving student data to database: " + student.getName());
+    }
+}
+
+public class SingleResponsibilityPrinciple {
+    public static void main(String[] args) {
+        Student student = new Student("Manogna");
+        StudentView view = new StudentView();
+        StudentRepository repository = new StudentRepository();
+
+        view.displayStudentInfo(student);
+        repository.save(student);
+    }
+}
