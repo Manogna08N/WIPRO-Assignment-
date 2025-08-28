@@ -1,0 +1,58 @@
+interface Shape {
+    double getArea();
+}
+
+class Rectangle implements Shape {
+    protected double width;
+    protected double height;
+
+    public Rectangle(double width, double height) {
+        this.width = width;
+        this.height = height;
+    }
+
+    public void setWidth(double width) {
+        this.width = width;
+    }
+
+    public void setHeight(double height) {
+        this.height = height;
+    }
+
+    @Override
+    public double getArea() {
+        return width * height;
+    }
+}
+
+
+class Square extends Rectangle {
+    public Square(double side) {
+        super(side, side);
+    }
+
+    @Override
+    public void setWidth(double width) {
+        super.setWidth(width);
+        super.setHeight(width);
+    }
+
+    @Override
+    public void setHeight(double height) {
+        super.setHeight(height);
+        super.setWidth(height);
+    }
+}
+
+public class LiskovSubstitutionPrinciple {
+    public static void main(String[] args) {
+        Rectangle rect = new Rectangle(5, 4);
+        System.out.println("Rectangle area: " + rect.getArea()); //Prints 20.0
+
+        // The program should work correctly if we substitute with a Square
+        Rectangle square = new Square(5);
+        square.setWidth(10); // User expects width to be 10 and height to be 5
+        // but now both are 10, breaking the expected behavior.
+        System.out.println("Square as Rectangle area: " + square.getArea()); // Prints 100.0, which is unexpected
+    }
+}
